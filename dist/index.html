@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">ToDo List</header>
+    <main class="main">
+        <div class="projects">
+          <!--
+            <button id="inbox-button">Inbox</button>
+            <button id="today-button">Today</button>
+            <button id="this-week-button">This Week</button>
+          --> 
+            <h2>Projects</h2> 
+            <span id="projects"></span>
+            <span>
+              <input type="text" value="add project" id="add-project-text"/>
+              <button id="add-project-btn">Add</button>
+            </span>
+        </div>
+        <div class="tasks">
+          <h2 id="task-title">Inbox</h2>
+          <span id="tasks"></span>
+          <span>
+            <input type="text" value="add task" id="add-task-text"/>
+            <button id="add-task-btn">Add</button>
+          </span>
+        </div>
+    </main>
+    <footer class="footer">Gelo</footer>
+  </body>
+</html>
