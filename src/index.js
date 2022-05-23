@@ -35,15 +35,27 @@ const drawProjectList = () => {
     cleanChildNodes(projectList)
     for (let i in toDoList.projects){
         let projectName = toDoList.projects[i].getName()
+        let divContainer = document.createElement('div')
         let div = document.createElement('button')
+        let delProjectButton = document.createElement('button')
         div.setAttribute('id', projectName)
+        delProjectButton.setAttribute('id', projectName)
         div.className = 'project-btn'
+        delProjectButton.className = 'delete-project-btn'
         div.innerText = projectName
-        projectList.appendChild(div)
+        delProjectButton.innerText = 'x'
+        divContainer.appendChild(div)
+        divContainer.appendChild(delProjectButton)
+        projectList.appendChild(divContainer)
     }
     const projectBtn = document.querySelectorAll('.project-btn')
     for (let project of projectBtn){
         project.addEventListener('click', projectBtnHandler)
+    }
+
+    const delProjectBtn = document.querySelectorAll('.delete-project-btn')
+    for (let project of delProjectBtn){
+        project.addEventListener('click', delProjectBtnHandler)
     }
 }
 
@@ -56,6 +68,13 @@ const projectBtnHandler = (e) => {
 
 const addProjectButtonHandler = () => {
     toDoList.addProject(addProjectInput.value)
+    projectListContainer.remove()
+    drawProjectList()
+}
+
+const delProjectBtnHandler = (e) => {
+    let projectName = e.target.id
+    toDoList.deleteProject(projectName)
     projectListContainer.remove()
     drawProjectList()
 }
@@ -74,22 +93,40 @@ const drawTaskList = (projectName) => {
     let project = toDoList.getProject(projectName)
     for (let i in project.getTasks()){
         let taskName = project.getTasks()[i].getName()
+        let divContainer = document.createElement('div')
         let div = document.createElement('button')
+        let delTaskButton = document.createElement('button')
+        delTaskButton.setAttribute('id', taskName)
         div.setAttribute('id', taskName)
+        delTaskButton.className = 'delete-task-button'
         div.className = 'task-btn'
+        delTaskButton.innerText = 'x'
         div.innerText = taskName
-        taskList.appendChild(div)
+        divContainer.appendChild(div)
+        divContainer.appendChild(delTaskButton)
+        taskList.appendChild(divContainer)
+    }
+    const delTaskBtn = document.querySelectorAll('.delete-task-button')
+    for (let task of delTaskBtn){
+        task.addEventListener('click', delTaskBtnHandler)
     }
 
+    
+    
 }
+
+const delTaskBtnHandler = (e) => {
+    let taskName = e.target.id
+    console.log(taskName)
+    let project = toDoList.getProject(title.innerText)
+    project.deleteTask(taskName)
+    drawTaskList(project.getName())
+}
+
+
+
+
 
 drawProjectList()
 addProjectBtn.addEventListener('click', addProjectButtonHandler)
 addTaskBtn.addEventListener('click', addTaskButtonHandler)
-
-
-
-
-
-
-

@@ -17,4 +17,9 @@ export default class Todo{
     getProject(projectName){
         return this.projects.find((project) => project.getName() === projectName)
     }
+
+    deleteProject(projectName) {
+        const projectToDelete = this.projects.find((project) => project.getName() === projectName)
+        this.projects.splice(this.projects.indexOf(projectToDelete), 1)
+    }
 }
