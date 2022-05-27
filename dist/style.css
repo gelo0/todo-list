@@ -66,3 +66,26 @@ h2 {
   display: flex;
   flex-direction: column;
 }
+
+.project-btn,
+.task-btn{
+  display: flex;
+  flex-grow: 1;
+}
+
+.project-list-container,
+.task-list-container {
+  display: flex;
+}
+
+.task-input{
+  display: flex;
+  flex-direction: row;
+  margin: 2rem;
+}
+
+.task-text-input{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

@@ -10,11 +10,6 @@
     <header class="header">ToDo List</header>
     <main class="main">
         <div class="projects">
-          <!--
-            <button id="inbox-button">Inbox</button>
-            <button id="today-button">Today</button>
-            <button id="this-week-button">This Week</button>
-          --> 
             <h2>Projects</h2> 
             <span id="projects"></span>
             <span>
@@ -25,8 +20,17 @@
         <div class="tasks">
           <h2 id="task-title">Inbox</h2>
           <span id="tasks"></span>
-          <span>
-            <input type="text" value="add task" id="add-task-text"/>
+          <span class="task-input">
+            <div class="task-text-input">
+              <input type="text" value="Add task" id="add-task-text"/>
+              <input type="text" value="Description" id="description-task-text"/>
+              <input type="date" id="due-date">
+              <select id="priority" name="priority">
+                <option value="low">Low priority</option>
+                <option value="normal">Normal priority</option>
+                <option value="high">High priority</option>
+              </select>
+            </div>
             <button id="add-task-btn">Add</button>
           </span>
         </div>
