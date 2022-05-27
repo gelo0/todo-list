@@ -89,3 +89,9 @@ h2 {
   flex-direction: column;
   flex-grow: 1;
 }
+
+#task-info{
+  background-color:rgb(238, 235, 235);
+  margin: 1rem;
+  padding: 1rem;
+}

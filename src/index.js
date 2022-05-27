@@ -11,6 +11,7 @@ const taskList = document.querySelector('#tasks')
 
 
 const title = document.getElementById('task-title')
+const taskInfoContainer = document.querySelector('#task-info')
 
 const addProjectBtn = document.getElementById('add-project-btn')
 const addProjectInput = document.getElementById('add-project-text')
@@ -107,6 +108,7 @@ const addTaskButtonHandler = () => {
 
 const drawTaskList = (projectName) => {
     cleanChildNodes(taskList)
+    cleanChildNodes(taskInfoContainer)
     let project = toDoList.getProject(projectName)
     for (let i in project.getTasks()){
         let taskName = project.getTasks()[i].getName()
@@ -144,14 +146,34 @@ const delTaskBtnHandler = (e) => {
 }
 
 const taskBtnHandler = (e) => {
+
+    cleanChildNodes(taskInfoContainer)
+
     let taskName = e.target.id
     let projectName = title.innerText
     let task = toDoList.getProject(projectName).getTask(taskName)
     let description = task.getDescription()
     let date = task.getDate().toDateString()
     let priority = task.getPriority()
+
+    let taskTitle = document.createElement('p')
+    let taskDescription = document.createElement('p')
+    let taskDate = document.createElement('p')
+    let taskPriority = document.createElement('p')
+
+    taskTitle.innerText = taskName
+    taskDescription.innerText = `Description: ${description}`
+    taskDate.innerText = `Due date: ${date}`
+    taskPriority.innerText = `Priority ${priority}`
+
+    taskInfoContainer.appendChild(taskTitle)
+    taskInfoContainer.appendChild(taskDescription)
+    taskInfoContainer.appendChild(taskDate)
+    taskInfoContainer.appendChild(taskPriority)
+
+
     console.log(priority)
-    
+
 }
 
 
